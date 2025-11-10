@@ -18,8 +18,6 @@ from .errors import (
     SciTeXError,
     SciTeXWarning,
     ConfigurationError,
-    ValidationError,
-    FileNotFoundError as SciTeXFileNotFoundError,
 )
 
 __all__ = [
@@ -29,6 +27,5 @@ __all__ = [
     "SciTeXError",
     "SciTeXWarning",
     "ConfigurationError",
-    "ValidationError",
     "__version__",
 ]

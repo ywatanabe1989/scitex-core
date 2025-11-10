@@ -35,8 +35,28 @@ import re
 import sys
 from typing import Any, TextIO
 
-from ..str._clean_path import clean_path
-from ..str._printc import printc
+# Inlined simple utilities to avoid external dependencies
+def clean_path(path_string: str) -> str:
+    """Clean and normalize a file system path."""
+    import os
+    return os.path.normpath(str(path_string))
+
+def printc(message: str, c: str = "blue", **kwargs):
+    """Simple colored print (fallback if colorama not available)."""
+    try:
+        from colorama import Fore, Style
+        colors = {
+            "red": Fore.RED,
+            "green": Fore.GREEN,
+            "yellow": Fore.YELLOW,
+            "blue": Fore.BLUE,
+            "magenta": Fore.MAGENTA,
+            "cyan": Fore.CYAN,
+        }
+        color_code = colors.get(c, "")
+        print(f"{color_code}{message}{Style.RESET_ALL}")
+    except ImportError:
+        print(message)
 
 """Functions & Classes"""
 def _get_logger():
