@@ -18,7 +18,7 @@ import sys
 import select
 import time
 
-import scitex
+from scitex_core.str import color_text
 from ._types import CommandInput
 from ._types import ShellResult
 from ._security import validate_command
@@ -57,7 +57,7 @@ def execute(
 
     if verbose:
         cmd_display = " ".join(command_str_or_list)
-        print(scitex.str.color_text(f"{cmd_display}", "yellow"))
+        print(color_text(f"{cmd_display}", "yellow"))
 
     if stream_output:
         # Use real-time streaming mode
@@ -101,7 +101,7 @@ def _execute_buffered(
         if stdout:
             print(stdout)
         if stderr:
-            print(scitex.str.color_text(stderr, "red"))
+            print(color_text(stderr, "red"))
 
     return result
 
@@ -145,7 +145,7 @@ def _execute_with_streaming(
                 process.kill()
                 timeout_msg = f"Command timed out after {timeout} seconds"
                 if verbose:
-                    print(scitex.str.color_text(timeout_msg, "red"), flush=True)
+                    print(color_text(timeout_msg, "red"), flush=True)
                 stderr_data.append(timeout_msg.encode())
                 break
 
@@ -170,7 +170,7 @@ def _execute_with_streaming(
                     stderr_data.append(chunk)
                     if verbose:
                         text = chunk.decode("utf-8", errors="replace")
-                        print(scitex.str.color_text(text, "red"), end="", flush=True)
+                        print(color_text(text, "red"), end="", flush=True)
             except (IOError, BlockingIOError):
                 pass
 
@@ -193,7 +193,7 @@ def _execute_with_streaming(
                         stderr_data.append(chunk)
                         if verbose:
                             text = chunk.decode("utf-8", errors="replace")
-                            print(scitex.str.color_text(text, "red"), end="", flush=True)
+                            print(color_text(text, "red"), end="", flush=True)
                 except (IOError, BlockingIOError):
                     pass
                 break
