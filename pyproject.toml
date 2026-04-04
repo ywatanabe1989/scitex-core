@@ -7,8 +7,8 @@ name = "scitex-core"
 version = "0.2.0"
 description = "Core infrastructure and fundamental utilities for the SciTeX ecosystem"
 readme = "README.md"
-requires-python = ">=3.8"
-license = { text = "MIT" }
+requires-python = ">=3.10"
+license = "AGPL-3.0"
 authors = [
     { name = "Yusuke Watanabe", email = "ywatanabe@scitex.ai" }
 ]
@@ -21,18 +21,19 @@ keywords = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 
 dependencies = [
-    "colorama>=0.4.0",  # For colored terminal output
+    "colorama>=0.4.0",
+    "numpy>=1.20.0",
+    "natsort>=8.0.0",
 ]
 
 [project.urls]
@@ -40,13 +41,29 @@ Homepage = "https://github.com/ywatanabe1989/scitex-core"
 Repository = "https://github.com/ywatanabe1989/scitex-core"
 "Bug Tracker" = "https://github.com/ywatanabe1989/scitex-core/issues"
 
+[project.entry-points."scitex_dev.docs"]
+scitex-core = "scitex_core"
+
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0",
     "pytest-cov",
-    "black>=22.0",
+    "ruff>=0.4.0",
     "mypy>=0.950",
 ]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/scitex_core"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
