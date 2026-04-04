@@ -44,6 +44,9 @@ Repository = "https://github.com/ywatanabe1989/scitex-core"
 [project.entry-points."scitex_dev.docs"]
 scitex-core = "scitex_core"
 
+[project.entry-points."scitex_dev.skills"]
+scitex-core = "scitex_core"
+
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0",

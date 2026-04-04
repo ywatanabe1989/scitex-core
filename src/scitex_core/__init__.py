@@ -10,17 +10,37 @@ Provides foundational utilities used across all SciTeX packages:
 - errors: Common error classes with rich context
 - sh: Safe shell command execution
 - str: String utilities including ANSI color formatting
-- types: Shared type definitions
+- path: File path and directory utilities
+- repro: Reproducibility utilities (ID generation, random state management)
+- types: Shared type definitions and validators
 """
 
-__version__ = "0.1.1"
+__version__ = "0.2.0"
 
 # Re-export main modules for convenient imports
 from . import errors
 from . import logging
+from . import path
+from . import repro
 from . import sh
 from . import str
+from . import types
+from . import dict
+from . import parallel
+from . import dt
 
-__all__ = ["errors", "logging", "sh", "str", "__version__"]
+__all__ = [
+    "errors",
+    "logging",
+    "path",
+    "repro",
+    "sh",
+    "str",
+    "types",
+    "dict",
+    "parallel",
+    "dt",
+    "__version__",
+]
 
 # EOF

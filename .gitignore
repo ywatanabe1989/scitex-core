@@ -1,3 +1,12 @@
+# Claude
+docs/to_claude
+docs/from_agents
+docs/from_user
+CLAUDE.md
+.claude
+mgmt
+.mcp.json
+
 # Python
 __pycache__/
 *.py[cod]
