@@ -15,7 +15,7 @@ Provides foundational utilities used across all SciTeX packages:
 - types: Shared type definitions and validators
 """
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 # Re-export main modules for convenient imports
 from . import errors
