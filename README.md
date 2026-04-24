@@ -8,6 +8,15 @@
 
 Core infrastructure for the SciTeX ecosystem.
 
+> **Interfaces:** Python ⭐⭐⭐ (primary) · CLI — · MCP — · Skills ⭐⭐ · Hook — · HTTP —
+
+## Problem and Solution
+
+
+| # | Problem | Solution |
+|---|---------|----------|
+| 1 | **10 separate scitex-* utility packages for dev tooling** -- `pip install scitex-str`, `scitex-dict`, `scitex-path`, ... gets tedious | **Bundled foundation** -- `import scitex_core` exposes `logging`, `errors`, `sh`, `path`, `str`, `dict`, `types`, `dt`, `parallel`, `repro` in one install |
+
 ## Overview
 
 `scitex-core` provides shared utilities used across all SciTeX packages:
