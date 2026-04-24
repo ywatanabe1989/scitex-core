@@ -4,31 +4,29 @@
 # File: /home/ywatanabe/proj/scitex-code/src/scitex/sh/_execute.py
 # ----------------------------------------
 from __future__ import annotations
+
 import os
-__FILE__ = (
-    "./src/scitex/sh/_execute.py"
-)
+
+__FILE__ = "./src/scitex/sh/_execute.py"
 __DIR__ = os.path.dirname(__FILE__)
 # ----------------------------------------
 
 __FILE__ = __file__
 
 import subprocess
-import sys
-import select
 import time
 
 from scitex_core.str import color_text
-from ._types import CommandInput
-from ._types import ShellResult
+
 from ._security import validate_command
+from ._types import CommandInput, ShellResult
 
 
 def execute(
     command_str_or_list: CommandInput,
     verbose: bool = True,
     timeout: int = None,
-    stream_output: bool = False
+    stream_output: bool = False,
 ) -> ShellResult:
     """
     Executes a shell command safely (list format only).
@@ -54,6 +52,9 @@ def execute(
     - sh(['pdflatex', '-interaction=nonstopmode', 'file.tex'], stream_output=True)
     """
     validate_command(command_str_or_list)
+
+    if not command_str_or_list:
+        raise ValueError("Empty command list - at least the program name is required")
 
     if verbose:
         cmd_display = " ".join(command_str_or_list)
@@ -84,7 +85,7 @@ def _execute_buffered(
         process.kill()
         stdout_bytes, stderr_bytes = process.communicate()
         timeout_msg = f"Command timed out after {timeout} seconds"
-        stderr_bytes = (stderr_bytes + b"\n" + timeout_msg.encode("utf-8"))
+        stderr_bytes = stderr_bytes + b"\n" + timeout_msg.encode("utf-8")
 
     stdout = stdout_bytes.decode("utf-8").strip()
     stderr = stderr_bytes.decode("utf-8").strip()
@@ -110,11 +111,10 @@ def _execute_with_streaming(
     command_str_or_list: CommandInput, verbose: bool, timeout: int
 ) -> ShellResult:
     """Execute command with real-time output streaming using select."""
-    import io
 
     # Set PYTHONUNBUFFERED for Python scripts and unbuffered mode for shell
     env = os.environ.copy()
-    env['PYTHONUNBUFFERED'] = '1'
+    env["PYTHONUNBUFFERED"] = "1"
 
     process = subprocess.Popen(
         command_str_or_list,
@@ -131,6 +131,7 @@ def _execute_with_streaming(
 
     # Use non-blocking reads
     import fcntl
+
     def make_non_blocking(fd):
         flags = fcntl.fcntl(fd, fcntl.F_GETFL)
         fcntl.fcntl(fd, fcntl.F_SETFL, flags | os.O_NONBLOCK)
@@ -201,7 +202,7 @@ def _execute_with_streaming(
             # Small sleep to prevent CPU spinning
             time.sleep(0.05)
 
-    except Exception as e:
+    except Exception:
         process.kill()
         raise
 
@@ -217,5 +218,6 @@ def _execute_with_streaming(
     }
 
     return result
+
 
 # EOF

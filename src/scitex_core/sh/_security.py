@@ -4,19 +4,17 @@
 # File: /home/ywatanabe/proj/scitex-code/src/scitex/sh/_security.py
 # ----------------------------------------
 from __future__ import annotations
+
 import os
-__FILE__ = (
-    "./src/scitex/sh/_security.py"
-)
+
+__FILE__ = "./src/scitex/sh/_security.py"
 __DIR__ = os.path.dirname(__FILE__)
 # ----------------------------------------
 
 __FILE__ = __file__
 
 import shlex
-from typing import Union
-from typing import List
-
+from typing import List, Union
 
 DANGEROUS_CHARS = [";", "|", "&", "$", "`", "\n", ">", "<", "(", ")", "{", "}"]
 
@@ -63,5 +61,6 @@ def quote(arg: str) -> str:
     >>> sh(f"cat {quote(filename)}")
     """
     return shlex.quote(arg)
+
 
 # EOF
