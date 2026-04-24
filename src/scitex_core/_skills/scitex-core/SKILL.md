@@ -29,3 +29,8 @@ This package does not ship as a submodule of the `scitex` umbrella.
 ### Conventions
 
 * [20_conventions](20_conventions.md) — Import style, logging defaults, shadowed stdlib names
+
+
+## Environment
+
+- [21_env-vars.md](21_env-vars.md) — SCITEX_* env vars read by scitex-core at runtime
