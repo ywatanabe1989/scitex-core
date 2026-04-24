@@ -62,7 +62,10 @@ def is_listed_X(obj: Any, types: Union[Type, tuple, list]) -> bool:
         for typ in types:
             conditions.append(np.array([isinstance(o, typ) for o in obj]).all())
 
-        return np.any(conditions)
+        # Coerce to plain Python bool — np.any() returns np.bool_ / np.True_
+        # under numpy>=2 and `np.True_ is not True`, breaking the callers that
+        # do `assert is_listed_X(...) is True`.
+        return bool(np.any(conditions))
 
     except Exception:
         return False
