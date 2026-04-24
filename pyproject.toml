@@ -8,7 +8,7 @@ version = "0.2.2"
 description = "Core infrastructure and fundamental utilities for the SciTeX ecosystem"
 readme = "README.md"
 requires-python = ">=3.10"
-license = "AGPL-3.0"
+license = "AGPL-3.0-only"
 authors = [
     { name = "Yusuke Watanabe", email = "ywatanabe@scitex.ai" }
 ]
