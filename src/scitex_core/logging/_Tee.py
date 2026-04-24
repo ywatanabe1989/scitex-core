@@ -4,10 +4,10 @@
 # File: /home/ywatanabe/proj/scitex_repo/src/scitex/logging/_Tee.py
 # ----------------------------------------
 from __future__ import annotations
+
 import os
-__FILE__ = (
-    "./src/scitex/logging/_Tee.py"
-)
+
+__FILE__ = "./src/scitex/logging/_Tee.py"
 __DIR__ = os.path.dirname(__FILE__)
 # ----------------------------------------
 
@@ -35,16 +35,20 @@ import re
 import sys
 from typing import Any, TextIO
 
+
 # Inlined simple utilities to avoid external dependencies
 def clean_path(path_string: str) -> str:
     """Clean and normalize a file system path."""
     import os
+
     return os.path.normpath(str(path_string))
+
 
 def printc(message: str, c: str = "blue", **kwargs):
     """Simple colored print (fallback if colorama not available)."""
     try:
         from colorama import Fore, Style
+
         colors = {
             "red": Fore.RED,
             "green": Fore.GREEN,
@@ -58,7 +62,10 @@ def printc(message: str, c: str = "blue", **kwargs):
     except ImportError:
         print(message)
 
+
 """Functions & Classes"""
+
+
 def _get_logger():
     """Get logger lazily to avoid circular import during module initialization."""
     from scitex import logging
@@ -67,20 +74,28 @@ def _get_logger():
 
 
 class Tee:
-    def __init__(self, stream: TextIO, log_path: str, verbose=True) -> None:
+    def __init__(self, stream: TextIO, log_path_or_stream, verbose=True) -> None:
         self.verbose = verbose
         self._stream = stream
-        self._log_path = log_path
-        try:
-            self._log_file = open(log_path, "w", buffering=1)  # Line buffering
-            if verbose:
-                # Show where logs are being saved using scitex logging
-                logger = _get_logger()
-                stream_name = "stderr" if stream is sys.stderr else "stdout"
-                logger.debug(f"Tee [{stream_name}]: {log_path}")
-        except Exception as e:
-            printc(f"Failed to open log file {log_path}: {e}", c="red")
-            self._log_file = None
+        # Accept either a filesystem path (str/PathLike) or an open stream.
+        if hasattr(log_path_or_stream, "write"):
+            self._log_path = getattr(log_path_or_stream, "name", None)
+            self._log_file = log_path_or_stream
+            self._owns_log_file = False
+        else:
+            log_path = _os.fspath(log_path_or_stream)
+            self._log_path = log_path
+            try:
+                self._log_file = open(log_path, "w", buffering=1)
+                self._owns_log_file = True
+                if verbose:
+                    logger = _get_logger()
+                    stream_name = "stderr" if stream is sys.stderr else "stdout"
+                    logger.debug(f"Tee [{stream_name}]: {log_path}")
+            except Exception as e:
+                printc(f"Failed to open log file {log_path}: {e}", c="red")
+                self._log_file = None
+                self._owns_log_file = False
         self._is_stderr = stream is sys.stderr
 
     def write(self, data: Any) -> None:
@@ -112,11 +127,12 @@ class Tee:
         return self._stream.buffer
 
     def close(self):
-        """Explicitly close the log file."""
+        """Explicitly close the log file (only if we opened it)."""
         if hasattr(self, "_log_file") and self._log_file is not None:
             try:
                 self._log_file.flush()
-                self._log_file.close()
+                if getattr(self, "_owns_log_file", True):
+                    self._log_file.close()
                 if self.verbose:
                     # Use lazy logger to avoid circular import
                     logger = _get_logger()
@@ -131,40 +147,71 @@ class Tee:
         if hasattr(self, "_log_file") and self._log_file is not None:
             try:
                 # Check if the file object is still valid
-                if (
-                    hasattr(self._log_file, "closed")
-                    and not self._log_file.closed
-                ):
+                if hasattr(self._log_file, "closed") and not self._log_file.closed:
                     self.close()
             except Exception:
                 # Silently ignore exceptions during cleanup
                 pass
 
 
-def tee(sys, sdir=None, verbose=True):
-    """Redirects stdout and stderr to both console and log files.
+class _TeeContext:
+    """Context manager that redirects ``sys.stdout`` to a ``Tee``.
+
+    Used by the path-based form of :func:`tee`.
+    """
+
+    def __init__(self, path: str, verbose: bool = False) -> None:
+        self._path = _os.fspath(path)
+        self._verbose = verbose
+        self._original_stdout = None
+        self._tee = None
+        self._file = None
+
+    def __enter__(self):
+        self._original_stdout = sys.stdout
+        self._file = open(self._path, "w", buffering=1)
+        self._tee = Tee(self._original_stdout, self._file, verbose=self._verbose)
+        sys.stdout = self._tee
+        return self._tee
+
+    def __exit__(self, exc_type, exc, tb):
+        try:
+            if self._tee is not None:
+                try:
+                    self._tee.flush()
+                except Exception:
+                    pass
+        finally:
+            sys.stdout = self._original_stdout
+            if self._file is not None:
+                try:
+                    self._file.flush()
+                    self._file.close()
+                except Exception:
+                    pass
+        return False
+
+
+def tee(sys_or_path=None, sdir=None, verbose=True):
+    """Tee stdout/stderr to files.
+
+    Two calling styles are supported:
+
+    1. ``tee(sys_module, sdir=None)`` — the legacy call that returns
+       ``(stdout_tee, stderr_tee)`` wrapping ``sys.stdout`` / ``sys.stderr``.
+    2. ``tee(path)`` — context-manager form that redirects ``sys.stdout``
+       to a :class:`Tee` writing to both the original stdout and ``path``.
 
     Example
     -------
-    >>> import sys
-    >>> sys.stdout, sys.stderr = tee(sys)
-    >>> print("abc")  # stdout
-    >>> print(1 / 0)  # stderr
-
-    Parameters
-    ----------
-    sys_module : module
-        System module containing stdout and stderr
-    sdir : str, optional
-        Directory for log files
-    verbose : bool, default=True
-        Whether to print log file locations
-
-    Returns
-    -------
-    tuple[Any, Any]
-        Wrapped stdout and stderr objects
+    >>> with tee("/tmp/out.log"):
+    ...     print("hello")  # printed + logged to /tmp/out.log
     """
+    # Path / PathLike / str → context-manager form
+    if isinstance(sys_or_path, (str, bytes)) or hasattr(sys_or_path, "__fspath__"):
+        return _TeeContext(sys_or_path, verbose=verbose)
+
+    sys = sys_or_path
     import inspect
 
     ####################
@@ -197,7 +244,6 @@ def tee(sys, sdir=None, verbose=True):
 if __name__ == "__main__":
     # Argument Parser
     import matplotlib.pyplot as plt
-
     import scitex
 
     main = tee
