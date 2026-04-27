@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scitex-core"
-version = "0.2.2"
+version = "0.2.3"
 description = "Core infrastructure and fundamental utilities for the SciTeX ecosystem"
 readme = "README.md"
 requires-python = ">=3.10"
