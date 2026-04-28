@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scitex-core"
-version = "0.2.6"
+version = "0.2.7"
 description = "Core infrastructure and fundamental utilities for the SciTeX ecosystem"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -21,7 +21,6 @@ keywords = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
