@@ -15,8 +15,15 @@ Provides foundational utilities used across all SciTeX packages:
 - types: Shared type definitions and validators
 """
 
-__version__ = "0.2.1"
-
+try:
+    from importlib.metadata import version as _v, PackageNotFoundError
+    try:
+        __version__ = _v("scitex-core")
+    except PackageNotFoundError:
+        __version__ = "0.0.0+local"
+    del _v, PackageNotFoundError
+except ImportError:  # pragma: no cover — only on ancient Pythons
+    __version__ = "0.0.0+local"
 # Re-export main modules for convenient imports
 from . import errors
 from . import logging
