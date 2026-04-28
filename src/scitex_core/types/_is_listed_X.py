@@ -8,8 +8,6 @@ Type checking utilities for lists of specific types.
 
 from typing import Any, Type, Union
 
-import numpy as np
-
 
 def is_listed_X(obj: Any, types: Union[Type, tuple, list]) -> bool:
     """
@@ -53,16 +51,16 @@ def is_listed_X(obj: Any, types: Union[Type, tuple, list]) -> bool:
         if not isinstance(obj, list):
             return False
 
-        # Ensure types is a list or tuple
-        if not isinstance(types, (list, tuple)):
-            types = [types]
+        # Ensure types is a tuple (isinstance accepts tuple of types)
+        if isinstance(types, list):
+            type_tuple = tuple(types)
+        elif isinstance(types, tuple):
+            type_tuple = types
+        else:
+            type_tuple = (types,)
 
-        # Check if all elements match one of the types
-        conditions = []
-        for typ in types:
-            conditions.append(np.array([isinstance(o, typ) for o in obj]).all())
-
-        return np.any(conditions)
+        # Each element must be an instance of at least one of the allowed types.
+        return all(isinstance(o, type_tuple) for o in obj)
 
     except Exception:
         return False

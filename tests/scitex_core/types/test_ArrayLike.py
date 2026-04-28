@@ -9,6 +9,13 @@ import pytest
 
 from scitex_core.types import ArrayLike, is_array_like
 
+try:
+    import torch  # noqa: F401
+
+    _has_torch = True
+except ImportError:
+    _has_torch = False
+
 
 class TestIsArrayLike:
     """Test is_array_like function."""
@@ -105,9 +112,7 @@ class TestArrayLikeType:
 
 
 # Skip torch tests if torch not available
-@pytest.mark.skipif(
-    not _has_torch(), reason="torch not available"
-)
+@pytest.mark.skipif(not _has_torch, reason="torch not available")
 class TestArrayLikeTorch:
     """Test is_array_like with torch (if available)."""
 
@@ -124,16 +129,6 @@ class TestArrayLikeTorch:
 
         data = torch.tensor([[1, 2], [3, 4]])
         assert is_array_like(data) is True
-
-
-def _has_torch():
-    """Check if torch is available."""
-    try:
-        import torch
-
-        return True
-    except ImportError:
-        return False
 
 
 if __name__ == "__main__":

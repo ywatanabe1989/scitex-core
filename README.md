@@ -1,5 +1,16 @@
 # scitex-core
 
+<!-- scitex-badges:start -->
+[![PyPI](https://img.shields.io/pypi/v/scitex-core.svg)](https://pypi.org/project/scitex-core/)
+[![Python](https://img.shields.io/pypi/pyversions/scitex-core.svg)](https://pypi.org/project/scitex-core/)
+[![Tests](https://github.com/ywatanabe1989/scitex-core/actions/workflows/test.yml/badge.svg)](https://github.com/ywatanabe1989/scitex-core/actions/workflows/test.yml)
+[![Install Test](https://github.com/ywatanabe1989/scitex-core/actions/workflows/install-test.yml/badge.svg)](https://github.com/ywatanabe1989/scitex-core/actions/workflows/install-test.yml)
+[![Coverage](https://codecov.io/gh/ywatanabe1989/scitex-core/graph/badge.svg)](https://codecov.io/gh/ywatanabe1989/scitex-core)
+[![Docs](https://readthedocs.org/projects/scitex-core/badge/?version=latest)](https://scitex-core.readthedocs.io/en/latest/)
+[![License: AGPL v3](https://img.shields.io/badge/license-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+<!-- scitex-badges:end -->
+
+
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-200%2B%20tests-brightgreen.svg)](tests/)
@@ -7,6 +18,8 @@
 [![Code Style](https://img.shields.io/badge/code%20style-black-black.svg)](https://github.com/psf/black)
 
 Core infrastructure for the SciTeX ecosystem.
+
+> **Interfaces:** Python ⭐⭐⭐ (primary) · CLI — · MCP — · Skills ⭐⭐ · Hook — · HTTP —
 
 ## Problem and Solution
 
