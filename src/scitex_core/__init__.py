@@ -15,6 +15,8 @@ Provides foundational utilities used across all SciTeX packages:
 - types: Shared type definitions and validators
 """
 
+from __future__ import annotations
+
 try:
     from importlib.metadata import version as _v, PackageNotFoundError
     try:
