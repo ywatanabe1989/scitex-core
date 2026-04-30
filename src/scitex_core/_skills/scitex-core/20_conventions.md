@@ -1,3 +1,9 @@
+---
+name: conventions
+description: Conventions — see file body for details.
+tags: [scitex-core, scitex-package]
+---
+
 # Conventions
 
 Rules every consumer of `scitex-core` should follow.
