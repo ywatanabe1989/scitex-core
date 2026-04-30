@@ -4,11 +4,11 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scitex-core"
-version = "0.2.1"
+version = "0.2.7"
 description = "Core infrastructure and fundamental utilities for the SciTeX ecosystem"
 readme = "README.md"
 requires-python = ">=3.10"
-license = "AGPL-3.0"
+license = "AGPL-3.0-only"
 authors = [
     { name = "Yusuke Watanabe", email = "ywatanabe@scitex.ai" }
 ]
@@ -21,7 +21,6 @@ keywords = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
@@ -31,9 +30,13 @@ classifiers = [
 ]
 
 dependencies = [
+    "tqdm",
+    "matplotlib",
     "colorama>=0.4.0",
     "numpy>=1.20.0",
     "natsort>=8.0.0",
+    "scitex-config>=0.3.0",
+    "scitex",
 ]
 
 [project.urls]
@@ -49,15 +52,22 @@ scitex-core = "scitex_core"
 scitex-core = "scitex_core"
 
 [project.optional-dependencies]
-# Bare install is the full package; [all] is provided for ecosystem-wide
-# consistency so `pip install scitex-*[all]` works uniformly.
-all = []
-
 dev = [
+    "scitex-dev",
     "pytest>=7.0",
     "pytest-cov",
     "ruff>=0.4.0",
     "mypy>=0.950",
+]
+docs = [
+    "sphinx>=7.0",
+    "sphinx-rtd-theme>=2.0",
+    "myst-parser>=2.0",
+    "sphinx-copybutton>=0.5",
+    "sphinx-autodoc-typehints>=1.25",
+]
+all = [
+    "scitex-core[dev,docs]",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -75,3 +85,6 @@ target-version = "py310"
 [tool.ruff.lint]
 select = ["E", "F", "W", "I"]
 ignore = ["E501"]
+
+[tool.scitex-linter]
+library_dirs = ["src", "tests", "examples"]

@@ -1,0 +1,1006 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scitex_core.str._latex_fallback &mdash; SciTeX Core v0.2.1</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=37f418d5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            SciTeX Core
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#basic-installation">Basic Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#development">Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#scitex-users">SciTeX Users</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#submodule-overview">Submodule Overview</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/logging.html">scitex_core.logging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.getLogger"><code class="docutils literal notranslate"><span class="pre">getLogger()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.configure"><code class="docutils literal notranslate"><span class="pre">configure()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.get_log_path"><code class="docutils literal notranslate"><span class="pre">get_log_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.Tee"><code class="docutils literal notranslate"><span class="pre">Tee</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.Tee.__init__"><code class="docutils literal notranslate"><span class="pre">Tee.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.Tee.buffer"><code class="docutils literal notranslate"><span class="pre">Tee.buffer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.Tee.close"><code class="docutils literal notranslate"><span class="pre">Tee.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.Tee.fileno"><code class="docutils literal notranslate"><span class="pre">Tee.fileno()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.Tee.flush"><code class="docutils literal notranslate"><span class="pre">Tee.flush()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.Tee.isatty"><code class="docutils literal notranslate"><span class="pre">Tee.isatty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.Tee.write"><code class="docutils literal notranslate"><span class="pre">Tee.write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.tee"><code class="docutils literal notranslate"><span class="pre">tee()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.log_to_file"><code class="docutils literal notranslate"><span class="pre">log_to_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/logging.html#scitex_core.logging.__DIR__"><code class="docutils literal notranslate"><span class="pre">__DIR__</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/path.html">scitex_core.path</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.find_dir"><code class="docutils literal notranslate"><span class="pre">find_dir()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.find_file"><code class="docutils literal notranslate"><span class="pre">find_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.find_git_root"><code class="docutils literal notranslate"><span class="pre">find_git_root()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.this_path"><code class="docutils literal notranslate"><span class="pre">this_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.get_this_path"><code class="docutils literal notranslate"><span class="pre">get_this_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.clean"><code class="docutils literal notranslate"><span class="pre">clean()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.symlink"><code class="docutils literal notranslate"><span class="pre">symlink()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.is_symlink"><code class="docutils literal notranslate"><span class="pre">is_symlink()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.readlink"><code class="docutils literal notranslate"><span class="pre">readlink()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.resolve_symlinks"><code class="docutils literal notranslate"><span class="pre">resolve_symlinks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.create_relative_symlink"><code class="docutils literal notranslate"><span class="pre">create_relative_symlink()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.unlink_symlink"><code class="docutils literal notranslate"><span class="pre">unlink_symlink()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.list_symlinks"><code class="docutils literal notranslate"><span class="pre">list_symlinks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/path.html#scitex_core.path.fix_broken_symlinks"><code class="docutils literal notranslate"><span class="pre">fix_broken_symlinks()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/repro.html">scitex_core.repro</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.gen_id"><code class="docutils literal notranslate"><span class="pre">gen_id()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.gen_ID"><code class="docutils literal notranslate"><span class="pre">gen_ID()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.gen_timestamp"><code class="docutils literal notranslate"><span class="pre">gen_timestamp()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.timestamp"><code class="docutils literal notranslate"><span class="pre">timestamp()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.hash_array"><code class="docutils literal notranslate"><span class="pre">hash_array()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager"><code class="docutils literal notranslate"><span class="pre">RandomStateManager</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager.__call__"><code class="docutils literal notranslate"><span class="pre">RandomStateManager.__call__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager.__init__"><code class="docutils literal notranslate"><span class="pre">RandomStateManager.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager._auto_fix_seeds"><code class="docutils literal notranslate"><span class="pre">RandomStateManager._auto_fix_seeds()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager._compute_hash"><code class="docutils literal notranslate"><span class="pre">RandomStateManager._compute_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager.checkpoint"><code class="docutils literal notranslate"><span class="pre">RandomStateManager.checkpoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager.clear_cache"><code class="docutils literal notranslate"><span class="pre">RandomStateManager.clear_cache()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager.get_generator"><code class="docutils literal notranslate"><span class="pre">RandomStateManager.get_generator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager.get_np_generator"><code class="docutils literal notranslate"><span class="pre">RandomStateManager.get_np_generator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager.get_sklearn_random_state"><code class="docutils literal notranslate"><span class="pre">RandomStateManager.get_sklearn_random_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager.get_torch_generator"><code class="docutils literal notranslate"><span class="pre">RandomStateManager.get_torch_generator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager.restore"><code class="docutils literal notranslate"><span class="pre">RandomStateManager.restore()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager.temporary_seed"><code class="docutils literal notranslate"><span class="pre">RandomStateManager.temporary_seed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.RandomStateManager.verify"><code class="docutils literal notranslate"><span class="pre">RandomStateManager.verify()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/repro.html#scitex_core.repro.reset"><code class="docutils literal notranslate"><span class="pre">reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/sh.html">scitex_core.sh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/sh.html#scitex_core.sh.sh"><code class="docutils literal notranslate"><span class="pre">sh()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/sh.html#scitex_core.sh.sh_run"><code class="docutils literal notranslate"><span class="pre">sh_run()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/sh.html#scitex_core.sh.quote"><code class="docutils literal notranslate"><span class="pre">quote()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/str.html">scitex_core.str</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.LaTeXFallbackError"><code class="docutils literal notranslate"><span class="pre">LaTeXFallbackError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.add_hat_in_latex_style"><code class="docutils literal notranslate"><span class="pre">add_hat_in_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.auto_factor_axis"><code class="docutils literal notranslate"><span class="pre">auto_factor_axis()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.axis_label"><code class="docutils literal notranslate"><span class="pre">axis_label()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.check_latex_capability"><code class="docutils literal notranslate"><span class="pre">check_latex_capability()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.check_unit_consistency"><code class="docutils literal notranslate"><span class="pre">check_unit_consistency()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.clean_path"><code class="docutils literal notranslate"><span class="pre">clean_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.color_text"><code class="docutils literal notranslate"><span class="pre">color_text()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.ct"><code class="docutils literal notranslate"><span class="pre">ct()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.decapitalize"><code class="docutils literal notranslate"><span class="pre">decapitalize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.disable_latex_fallback"><code class="docutils literal notranslate"><span class="pre">disable_latex_fallback()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.enable_latex_fallback"><code class="docutils literal notranslate"><span class="pre">enable_latex_fallback()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.factor_out_digits"><code class="docutils literal notranslate"><span class="pre">factor_out_digits()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.format_axis_label"><code class="docutils literal notranslate"><span class="pre">format_axis_label()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.format_plot_text"><code class="docutils literal notranslate"><span class="pre">format_plot_text()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.format_title"><code class="docutils literal notranslate"><span class="pre">format_title()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.get_fallback_mode"><code class="docutils literal notranslate"><span class="pre">get_fallback_mode()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.get_latex_status"><code class="docutils literal notranslate"><span class="pre">get_latex_status()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.grep"><code class="docutils literal notranslate"><span class="pre">grep()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.hat_latex_style"><code class="docutils literal notranslate"><span class="pre">hat_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.latex_fallback_decorator"><code class="docutils literal notranslate"><span class="pre">latex_fallback_decorator()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.latex_style"><code class="docutils literal notranslate"><span class="pre">latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.latex_to_mathtext"><code class="docutils literal notranslate"><span class="pre">latex_to_mathtext()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.latex_to_unicode"><code class="docutils literal notranslate"><span class="pre">latex_to_unicode()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.mask_api"><code class="docutils literal notranslate"><span class="pre">mask_api()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.parse"><code class="docutils literal notranslate"><span class="pre">parse()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.print_debug"><code class="docutils literal notranslate"><span class="pre">print_debug()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.printc"><code class="docutils literal notranslate"><span class="pre">printc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.readable_bytes"><code class="docutils literal notranslate"><span class="pre">readable_bytes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.remove_ansi"><code class="docutils literal notranslate"><span class="pre">remove_ansi()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.replace"><code class="docutils literal notranslate"><span class="pre">replace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.reset_latex_cache"><code class="docutils literal notranslate"><span class="pre">reset_latex_cache()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.safe_add_hat_in_latex_style"><code class="docutils literal notranslate"><span class="pre">safe_add_hat_in_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.safe_latex_render"><code class="docutils literal notranslate"><span class="pre">safe_latex_render()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.safe_to_latex_style"><code class="docutils literal notranslate"><span class="pre">safe_to_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.scientific_text"><code class="docutils literal notranslate"><span class="pre">scientific_text()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.set_fallback_mode"><code class="docutils literal notranslate"><span class="pre">set_fallback_mode()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.smart_tick_formatter"><code class="docutils literal notranslate"><span class="pre">smart_tick_formatter()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.squeeze_spaces"><code class="docutils literal notranslate"><span class="pre">squeeze_spaces()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.title"><code class="docutils literal notranslate"><span class="pre">title()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.to_latex_style"><code class="docutils literal notranslate"><span class="pre">to_latex_style()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/str.html#scitex_core.str.__DIR__"><code class="docutils literal notranslate"><span class="pre">__DIR__</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/types.html">scitex_core.types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/types.html#scitex_core.types.is_array_like"><code class="docutils literal notranslate"><span class="pre">is_array_like()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/types.html#scitex_core.types.is_list_of_type"><code class="docutils literal notranslate"><span class="pre">is_list_of_type()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/types.html#scitex_core.types.is_listed_X"><code class="docutils literal notranslate"><span class="pre">is_listed_X()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/dict.html">scitex_core.dict</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict"><code class="docutils literal notranslate"><span class="pre">DotDict</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__bool__"><code class="docutils literal notranslate"><span class="pre">DotDict.__bool__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__contains__"><code class="docutils literal notranslate"><span class="pre">DotDict.__contains__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__dir__"><code class="docutils literal notranslate"><span class="pre">DotDict.__dir__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__eq__"><code class="docutils literal notranslate"><span class="pre">DotDict.__eq__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__ge__"><code class="docutils literal notranslate"><span class="pre">DotDict.__ge__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__gt__"><code class="docutils literal notranslate"><span class="pre">DotDict.__gt__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__init__"><code class="docutils literal notranslate"><span class="pre">DotDict.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__iter__"><code class="docutils literal notranslate"><span class="pre">DotDict.__iter__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__le__"><code class="docutils literal notranslate"><span class="pre">DotDict.__le__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__len__"><code class="docutils literal notranslate"><span class="pre">DotDict.__len__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__lt__"><code class="docutils literal notranslate"><span class="pre">DotDict.__lt__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__ne__"><code class="docutils literal notranslate"><span class="pre">DotDict.__ne__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__repr__"><code class="docutils literal notranslate"><span class="pre">DotDict.__repr__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.__str__"><code class="docutils literal notranslate"><span class="pre">DotDict.__str__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.copy"><code class="docutils literal notranslate"><span class="pre">DotDict.copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.get"><code class="docutils literal notranslate"><span class="pre">DotDict.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.items"><code class="docutils literal notranslate"><span class="pre">DotDict.items()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.keys"><code class="docutils literal notranslate"><span class="pre">DotDict.keys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.pop"><code class="docutils literal notranslate"><span class="pre">DotDict.pop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.setdefault"><code class="docutils literal notranslate"><span class="pre">DotDict.setdefault()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.to_dict"><code class="docutils literal notranslate"><span class="pre">DotDict.to_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.update"><code class="docutils literal notranslate"><span class="pre">DotDict.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.DotDict.values"><code class="docutils literal notranslate"><span class="pre">DotDict.values()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.listed_dict"><code class="docutils literal notranslate"><span class="pre">listed_dict()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.pop_keys"><code class="docutils literal notranslate"><span class="pre">pop_keys()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.replace"><code class="docutils literal notranslate"><span class="pre">replace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.safe_merge"><code class="docutils literal notranslate"><span class="pre">safe_merge()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.to_str"><code class="docutils literal notranslate"><span class="pre">to_str()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dict.html#scitex_core.dict.flatten"><code class="docutils literal notranslate"><span class="pre">flatten()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/parallel.html">scitex_core.parallel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/parallel.html#scitex_core.parallel.run"><code class="docutils literal notranslate"><span class="pre">run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/dt.html">scitex_core.dt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/dt.html#scitex_core.dt.linspace"><code class="docutils literal notranslate"><span class="pre">linspace()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/errors.html">scitex_core.errors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.SciTeXError"><code class="docutils literal notranslate"><span class="pre">SciTeXError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.SciTeXError.__init__"><code class="docutils literal notranslate"><span class="pre">SciTeXError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.SciTeXWarning"><code class="docutils literal notranslate"><span class="pre">SciTeXWarning</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.ConfigurationError"><code class="docutils literal notranslate"><span class="pre">ConfigurationError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.ConfigFileNotFoundError"><code class="docutils literal notranslate"><span class="pre">ConfigFileNotFoundError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.ConfigFileNotFoundError.__init__"><code class="docutils literal notranslate"><span class="pre">ConfigFileNotFoundError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.ConfigKeyError"><code class="docutils literal notranslate"><span class="pre">ConfigKeyError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.ConfigKeyError.__init__"><code class="docutils literal notranslate"><span class="pre">ConfigKeyError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.IOError"><code class="docutils literal notranslate"><span class="pre">IOError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.FileFormatError"><code class="docutils literal notranslate"><span class="pre">FileFormatError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.FileFormatError.__init__"><code class="docutils literal notranslate"><span class="pre">FileFormatError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.SaveError"><code class="docutils literal notranslate"><span class="pre">SaveError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.SaveError.__init__"><code class="docutils literal notranslate"><span class="pre">SaveError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.LoadError"><code class="docutils literal notranslate"><span class="pre">LoadError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.LoadError.__init__"><code class="docutils literal notranslate"><span class="pre">LoadError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.ScholarError"><code class="docutils literal notranslate"><span class="pre">ScholarError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.SearchError"><code class="docutils literal notranslate"><span class="pre">SearchError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.SearchError.__init__"><code class="docutils literal notranslate"><span class="pre">SearchError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.EnrichmentError"><code class="docutils literal notranslate"><span class="pre">EnrichmentError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.EnrichmentError.__init__"><code class="docutils literal notranslate"><span class="pre">EnrichmentError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.PDFDownloadError"><code class="docutils literal notranslate"><span class="pre">PDFDownloadError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.PDFDownloadError.__init__"><code class="docutils literal notranslate"><span class="pre">PDFDownloadError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.DOIResolutionError"><code class="docutils literal notranslate"><span class="pre">DOIResolutionError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.DOIResolutionError.__init__"><code class="docutils literal notranslate"><span class="pre">DOIResolutionError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.PDFExtractionError"><code class="docutils literal notranslate"><span class="pre">PDFExtractionError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.PDFExtractionError.__init__"><code class="docutils literal notranslate"><span class="pre">PDFExtractionError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.BibTeXEnrichmentError"><code class="docutils literal notranslate"><span class="pre">BibTeXEnrichmentError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.BibTeXEnrichmentError.__init__"><code class="docutils literal notranslate"><span class="pre">BibTeXEnrichmentError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.TranslatorError"><code class="docutils literal notranslate"><span class="pre">TranslatorError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.TranslatorError.__init__"><code class="docutils literal notranslate"><span class="pre">TranslatorError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.AuthenticationError"><code class="docutils literal notranslate"><span class="pre">AuthenticationError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.AuthenticationError.__init__"><code class="docutils literal notranslate"><span class="pre">AuthenticationError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.PlottingError"><code class="docutils literal notranslate"><span class="pre">PlottingError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.FigureNotFoundError"><code class="docutils literal notranslate"><span class="pre">FigureNotFoundError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.FigureNotFoundError.__init__"><code class="docutils literal notranslate"><span class="pre">FigureNotFoundError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.AxisError"><code class="docutils literal notranslate"><span class="pre">AxisError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.AxisError.__init__"><code class="docutils literal notranslate"><span class="pre">AxisError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.DataError"><code class="docutils literal notranslate"><span class="pre">DataError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.ShapeError"><code class="docutils literal notranslate"><span class="pre">ShapeError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.ShapeError.__init__"><code class="docutils literal notranslate"><span class="pre">ShapeError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.DTypeError"><code class="docutils literal notranslate"><span class="pre">DTypeError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.DTypeError.__init__"><code class="docutils literal notranslate"><span class="pre">DTypeError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.PathError"><code class="docutils literal notranslate"><span class="pre">PathError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.InvalidPathError"><code class="docutils literal notranslate"><span class="pre">InvalidPathError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.InvalidPathError.__init__"><code class="docutils literal notranslate"><span class="pre">InvalidPathError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.PathNotFoundError"><code class="docutils literal notranslate"><span class="pre">PathNotFoundError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.PathNotFoundError.__init__"><code class="docutils literal notranslate"><span class="pre">PathNotFoundError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.TemplateError"><code class="docutils literal notranslate"><span class="pre">TemplateError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.TemplateViolationError"><code class="docutils literal notranslate"><span class="pre">TemplateViolationError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.TemplateViolationError.__init__"><code class="docutils literal notranslate"><span class="pre">TemplateViolationError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.NNError"><code class="docutils literal notranslate"><span class="pre">NNError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.ModelError"><code class="docutils literal notranslate"><span class="pre">ModelError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.ModelError.__init__"><code class="docutils literal notranslate"><span class="pre">ModelError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.StatsError"><code class="docutils literal notranslate"><span class="pre">StatsError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.TestError"><code class="docutils literal notranslate"><span class="pre">TestError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.TestError.__init__"><code class="docutils literal notranslate"><span class="pre">TestError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.warn_deprecated"><code class="docutils literal notranslate"><span class="pre">warn_deprecated()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.warn_performance"><code class="docutils literal notranslate"><span class="pre">warn_performance()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.warn_data_loss"><code class="docutils literal notranslate"><span class="pre">warn_data_loss()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.check_path"><code class="docutils literal notranslate"><span class="pre">check_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.check_file_exists"><code class="docutils literal notranslate"><span class="pre">check_file_exists()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.check_shape_compatibility"><code class="docutils literal notranslate"><span class="pre">check_shape_compatibility()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/errors.html#scitex_core.errors.__DIR__"><code class="docutils literal notranslate"><span class="pre">__DIR__</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SciTeX Core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">scitex_core.str._latex_fallback</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for scitex_core.str._latex_fallback</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Timestamp: &quot;2025-08-21 21:37:23 (ywatanabe)&quot;</span>
+<span class="c1"># File: /home/ywatanabe/proj/scitex_repo/src/scitex/str/_latex_fallback.py</span>
+<span class="c1"># ----------------------------------------</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">__FILE__</span> <span class="o">=</span> <span class="vm">__file__</span>
+<span class="n">__DIR__</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__FILE__</span><span class="p">)</span>
+<span class="c1"># ----------------------------------------</span>
+
+<span class="c1"># Time-stamp: &quot;2025-06-05 12:00:00 (ywatanabe)&quot;</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">LaTeX Fallback Mechanism for SciTeX</span>
+
+<span class="sd">This module provides a robust fallback system for LaTeX rendering issues.</span>
+<span class="sd">When LaTeX compilation fails (e.g., missing fonts, Node.js conflicts),</span>
+<span class="sd">it gracefully degrades to mathtext or plain text alternatives.</span>
+
+<span class="sd">Functionality:</span>
+<span class="sd">    - Detect LaTeX rendering capabilities</span>
+<span class="sd">    - Convert LaTeX to mathtext equivalents</span>
+<span class="sd">    - Provide plain text fallbacks</span>
+<span class="sd">    - Cache LaTeX capability status</span>
+<span class="sd">Input:</span>
+<span class="sd">    LaTeX strings and matplotlib configuration</span>
+<span class="sd">Output:</span>
+<span class="sd">    Fallback-compatible strings for matplotlib</span>
+<span class="sd">Prerequisites:</span>
+<span class="sd">    matplotlib</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span>
+
+<span class="c1"># matplotlib imports moved to functions that need them</span>
+
+<span class="c1"># Delay logging import to avoid circular dependency</span>
+<span class="c1"># scitex.logging imports _Tee which imports scitex.str which imports this file</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_logger</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get logger lazily to avoid circular import.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scitex</span><span class="w"> </span><span class="kn">import</span> <span class="n">logging</span>
+    <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># Use property-like access for logger</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_LoggerProxy</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">_get_logger</span><span class="p">(),</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">_LoggerProxy</span><span class="p">()</span>
+
+<span class="c1"># Global state for LaTeX capability</span>
+<span class="n">_latex_available</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">_fallback_mode</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span>  <span class="c1"># &quot;auto&quot;, &quot;force_mathtext&quot;, &quot;force_plain&quot;</span>
+
+
+<div class="viewcode-block" id="LaTeXFallbackError">
+<a class="viewcode-back" href="../../../api/str.html#scitex_core.str.LaTeXFallbackError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LaTeXFallbackError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when LaTeX fallback mechanisms fail.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+
+<div class="viewcode-block" id="set_fallback_mode">
+<a class="viewcode-back" href="../../../api/str.html#scitex_core.str.set_fallback_mode">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_fallback_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the global fallback mode for LaTeX rendering.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mode : str</span>
+<span class="sd">        Fallback mode: &quot;auto&quot; (detect capability), &quot;force_mathtext&quot;, or &quot;force_plain&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_fallback_mode</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="s2">&quot;force_mathtext&quot;</span><span class="p">,</span> <span class="s2">&quot;force_plain&quot;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid fallback mode: </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">_fallback_mode</span> <span class="o">=</span> <span class="n">mode</span>
+    <span class="c1"># Reset capability cache when mode changes</span>
+    <span class="k">global</span> <span class="n">_latex_available</span>
+    <span class="n">_latex_available</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+
+<div class="viewcode-block" id="get_fallback_mode">
+<a class="viewcode-back" href="../../../api/str.html#scitex_core.str.get_fallback_mode">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_fallback_mode</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the current fallback mode.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_fallback_mode</span></div>
+
+
+
+<div class="viewcode-block" id="check_latex_capability">
+<a class="viewcode-back" href="../../../api/str.html#scitex_core.str.check_latex_capability">[docs]</a>
+<span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_latex_capability</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if LaTeX rendering is available and working.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if LaTeX is available, False otherwise</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_latex_available</span>
+
+    <span class="c1"># Import matplotlib here when actually needed</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">_latex_available</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># If forcing a mode, return accordingly</span>
+    <span class="k">if</span> <span class="n">_fallback_mode</span> <span class="o">==</span> <span class="s2">&quot;force_mathtext&quot;</span> <span class="ow">or</span> <span class="n">_fallback_mode</span> <span class="o">==</span> <span class="s2">&quot;force_plain&quot;</span><span class="p">:</span>
+        <span class="n">_latex_available</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># Cache the result if already determined</span>
+    <span class="k">if</span> <span class="n">_latex_available</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_latex_available</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Test if LaTeX is configured</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;text.usetex&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="n">_latex_available</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># Try a simple LaTeX rendering test</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Test with a simple LaTeX expression</span>
+            <span class="n">text_obj</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$x^2$&quot;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>  <span class="c1"># Force rendering</span>
+            <span class="n">_latex_available</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LaTeX capability test failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">_latex_available</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LaTeX capability check failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">_latex_available</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+
+<div class="viewcode-block" id="latex_to_mathtext">
+<a class="viewcode-back" href="../../../api/str.html#scitex_core.str.latex_to_mathtext">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">latex_to_mathtext</span><span class="p">(</span><span class="n">latex_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert LaTeX syntax to matplotlib mathtext equivalent.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    latex_str : str</span>
+<span class="sd">        LaTeX string to convert</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        Mathtext equivalent string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">latex_str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">latex_str</span>
+
+    <span class="c1"># Remove outer $ if present</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">latex_str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">text</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Common LaTeX to mathtext conversions</span>
+    <span class="n">conversions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1"># Greek letters</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">alpha&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\alpha&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">beta&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\beta&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">gamma&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\gamma&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">delta&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\delta&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">epsilon&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\epsilon&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">theta&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\theta&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">lambda&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\lambda&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">mu&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\mu&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">pi&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\pi&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">sigma&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\sigma&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">tau&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\tau&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">phi&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\phi&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">omega&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\omega&quot;</span><span class="p">,</span>
+        <span class="c1"># Mathematical symbols</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">sum&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\sum&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">int&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\int&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">partial&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\partial&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">infty&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\infty&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">pm&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\pm&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">times&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\times&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">cdot&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\cdot&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">approx&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\approx&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">neq&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\neq&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">leq&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\leq&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">geq&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\geq&quot;</span><span class="p">,</span>
+        <span class="c1"># Functions</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">sin&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\sin&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">cos&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\cos&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">tan&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\tan&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">log&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\log&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">ln&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\ln&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">exp&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\exp&quot;</span><span class="p">,</span>
+        <span class="c1"># Formatting (limited mathtext support)</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">textbf\{([^}]+)\}&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\mathbf{\1}&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">mathbf\{([^}]+)\}&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\mathbf{\1}&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">textit\{([^}]+)\}&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\mathit{\1}&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">mathit\{([^}]+)\}&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\mathit{\1}&quot;</span><span class="p">,</span>
+        <span class="c1"># Hats and accents</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">hat\{([^}]+)\}&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\hat{\1}&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">overrightarrow\{([^}]+)\}&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\vec{\1}&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">vec\{([^}]+)\}&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\vec{\1}&quot;</span><span class="p">,</span>
+        <span class="c1"># Fractions (simple ones)</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">frac\{([^}]+)\}\{([^}]+)\}&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\frac{\1}{\2}&quot;</span><span class="p">,</span>
+        <span class="c1"># Subscripts and superscripts (should work as-is)</span>
+        <span class="c1"># Powers and indices are handled naturally by mathtext</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Apply conversions</span>
+    <span class="k">for</span> <span class="n">latex_pattern</span><span class="p">,</span> <span class="n">mathtext_replacement</span> <span class="ow">in</span> <span class="n">conversions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">latex_pattern</span><span class="p">,</span> <span class="n">mathtext_replacement</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+    <span class="c1"># Wrap in mathtext markers</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;$</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">$&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="latex_to_unicode">
+<a class="viewcode-back" href="../../../api/str.html#scitex_core.str.latex_to_unicode">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">latex_to_unicode</span><span class="p">(</span><span class="n">latex_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert LaTeX to Unicode plain text equivalent.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    latex_str : str</span>
+<span class="sd">        LaTeX string to convert</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        Unicode plain text equivalent</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">latex_str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">latex_str</span>
+
+    <span class="c1"># Remove outer $ if present</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">latex_str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">text</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Greek letters to Unicode</span>
+    <span class="n">greek_conversions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">alpha&quot;</span><span class="p">:</span> <span class="s2">&quot;α&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">beta&quot;</span><span class="p">:</span> <span class="s2">&quot;β&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">gamma&quot;</span><span class="p">:</span> <span class="s2">&quot;γ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">delta&quot;</span><span class="p">:</span> <span class="s2">&quot;δ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">epsilon&quot;</span><span class="p">:</span> <span class="s2">&quot;ε&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">zeta&quot;</span><span class="p">:</span> <span class="s2">&quot;ζ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">eta&quot;</span><span class="p">:</span> <span class="s2">&quot;η&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">theta&quot;</span><span class="p">:</span> <span class="s2">&quot;θ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">iota&quot;</span><span class="p">:</span> <span class="s2">&quot;ι&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">kappa&quot;</span><span class="p">:</span> <span class="s2">&quot;κ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">lambda&quot;</span><span class="p">:</span> <span class="s2">&quot;λ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">mu&quot;</span><span class="p">:</span> <span class="s2">&quot;μ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">nu&quot;</span><span class="p">:</span> <span class="s2">&quot;ν&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">xi&quot;</span><span class="p">:</span> <span class="s2">&quot;ξ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">pi&quot;</span><span class="p">:</span> <span class="s2">&quot;π&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">rho&quot;</span><span class="p">:</span> <span class="s2">&quot;ρ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">sigma&quot;</span><span class="p">:</span> <span class="s2">&quot;σ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">tau&quot;</span><span class="p">:</span> <span class="s2">&quot;τ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">upsilon&quot;</span><span class="p">:</span> <span class="s2">&quot;υ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">phi&quot;</span><span class="p">:</span> <span class="s2">&quot;φ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">chi&quot;</span><span class="p">:</span> <span class="s2">&quot;χ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">psi&quot;</span><span class="p">:</span> <span class="s2">&quot;ψ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">omega&quot;</span><span class="p">:</span> <span class="s2">&quot;ω&quot;</span><span class="p">,</span>
+        <span class="c1"># Capital Greek</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">Gamma&quot;</span><span class="p">:</span> <span class="s2">&quot;Γ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">Delta&quot;</span><span class="p">:</span> <span class="s2">&quot;Δ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">Theta&quot;</span><span class="p">:</span> <span class="s2">&quot;Θ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">Lambda&quot;</span><span class="p">:</span> <span class="s2">&quot;Λ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">Xi&quot;</span><span class="p">:</span> <span class="s2">&quot;Ξ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">Pi&quot;</span><span class="p">:</span> <span class="s2">&quot;Π&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">Sigma&quot;</span><span class="p">:</span> <span class="s2">&quot;Σ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">Upsilon&quot;</span><span class="p">:</span> <span class="s2">&quot;Υ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">Phi&quot;</span><span class="p">:</span> <span class="s2">&quot;Φ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">Psi&quot;</span><span class="p">:</span> <span class="s2">&quot;Ψ&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">Omega&quot;</span><span class="p">:</span> <span class="s2">&quot;Ω&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Mathematical symbols to Unicode</span>
+    <span class="n">symbol_conversions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">pm&quot;</span><span class="p">:</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">times&quot;</span><span class="p">:</span> <span class="s2">&quot;×&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">cdot&quot;</span><span class="p">:</span> <span class="s2">&quot;·&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">div&quot;</span><span class="p">:</span> <span class="s2">&quot;÷&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">neq&quot;</span><span class="p">:</span> <span class="s2">&quot;≠&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">leq&quot;</span><span class="p">:</span> <span class="s2">&quot;≤&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">geq&quot;</span><span class="p">:</span> <span class="s2">&quot;≥&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">approx&quot;</span><span class="p">:</span> <span class="s2">&quot;≈&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">infty&quot;</span><span class="p">:</span> <span class="s2">&quot;∞&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">partial&quot;</span><span class="p">:</span> <span class="s2">&quot;∂&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">sum&quot;</span><span class="p">:</span> <span class="s2">&quot;∑&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">int&quot;</span><span class="p">:</span> <span class="s2">&quot;∫&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">sqrt&quot;</span><span class="p">:</span> <span class="s2">&quot;√&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">angle&quot;</span><span class="p">:</span> <span class="s2">&quot;∠&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">degree&quot;</span><span class="p">:</span> <span class="s2">&quot;°&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Superscript numbers</span>
+    <span class="n">superscript_conversions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sa">r</span><span class="s2">&quot;\^0&quot;</span><span class="p">:</span> <span class="s2">&quot;⁰&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^1&quot;</span><span class="p">:</span> <span class="s2">&quot;¹&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^2&quot;</span><span class="p">:</span> <span class="s2">&quot;²&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^3&quot;</span><span class="p">:</span> <span class="s2">&quot;³&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^4&quot;</span><span class="p">:</span> <span class="s2">&quot;⁴&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^5&quot;</span><span class="p">:</span> <span class="s2">&quot;⁵&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^6&quot;</span><span class="p">:</span> <span class="s2">&quot;⁶&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^7&quot;</span><span class="p">:</span> <span class="s2">&quot;⁷&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^8&quot;</span><span class="p">:</span> <span class="s2">&quot;⁸&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^9&quot;</span><span class="p">:</span> <span class="s2">&quot;⁹&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^\{0\}&quot;</span><span class="p">:</span> <span class="s2">&quot;⁰&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^\{1\}&quot;</span><span class="p">:</span> <span class="s2">&quot;¹&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^\{2\}&quot;</span><span class="p">:</span> <span class="s2">&quot;²&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^\{3\}&quot;</span><span class="p">:</span> <span class="s2">&quot;³&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^\{4\}&quot;</span><span class="p">:</span> <span class="s2">&quot;⁴&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^\{5\}&quot;</span><span class="p">:</span> <span class="s2">&quot;⁵&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^\{6\}&quot;</span><span class="p">:</span> <span class="s2">&quot;⁶&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^\{7\}&quot;</span><span class="p">:</span> <span class="s2">&quot;⁷&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^\{8\}&quot;</span><span class="p">:</span> <span class="s2">&quot;⁸&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;\^\{9\}&quot;</span><span class="p">:</span> <span class="s2">&quot;⁹&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Subscript numbers</span>
+    <span class="n">subscript_conversions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sa">r</span><span class="s2">&quot;_0&quot;</span><span class="p">:</span> <span class="s2">&quot;₀&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_1&quot;</span><span class="p">:</span> <span class="s2">&quot;₁&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_2&quot;</span><span class="p">:</span> <span class="s2">&quot;₂&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_3&quot;</span><span class="p">:</span> <span class="s2">&quot;₃&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_4&quot;</span><span class="p">:</span> <span class="s2">&quot;₄&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_5&quot;</span><span class="p">:</span> <span class="s2">&quot;₅&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_6&quot;</span><span class="p">:</span> <span class="s2">&quot;₆&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_7&quot;</span><span class="p">:</span> <span class="s2">&quot;₇&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_8&quot;</span><span class="p">:</span> <span class="s2">&quot;₈&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_9&quot;</span><span class="p">:</span> <span class="s2">&quot;₉&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_\{0\}&quot;</span><span class="p">:</span> <span class="s2">&quot;₀&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_\{1\}&quot;</span><span class="p">:</span> <span class="s2">&quot;₁&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_\{2\}&quot;</span><span class="p">:</span> <span class="s2">&quot;₂&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_\{3\}&quot;</span><span class="p">:</span> <span class="s2">&quot;₃&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_\{4\}&quot;</span><span class="p">:</span> <span class="s2">&quot;₄&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_\{5\}&quot;</span><span class="p">:</span> <span class="s2">&quot;₅&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_\{6\}&quot;</span><span class="p">:</span> <span class="s2">&quot;₆&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_\{7\}&quot;</span><span class="p">:</span> <span class="s2">&quot;₇&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_\{8\}&quot;</span><span class="p">:</span> <span class="s2">&quot;₈&quot;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s2">&quot;_\{9\}&quot;</span><span class="p">:</span> <span class="s2">&quot;₉&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Apply all conversions</span>
+    <span class="n">all_conversions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="o">**</span><span class="n">greek_conversions</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">symbol_conversions</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">superscript_conversions</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">subscript_conversions</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">latex_pattern</span><span class="p">,</span> <span class="n">unicode_char</span> <span class="ow">in</span> <span class="n">all_conversions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">latex_pattern</span><span class="p">,</span> <span class="n">unicode_char</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+    <span class="c1"># Remove remaining LaTeX commands (simple cleanup)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">[a-zA-Z]+\{([^}]*)\}&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1&quot;</span><span class="p">,</span> <span class="n">text</span>
+    <span class="p">)</span>  <span class="c1"># \command{content} -&gt; content</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">[a-zA-Z]+&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>  <span class="c1"># \command -&gt; remove</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>  <span class="c1"># Remove remaining braces</span>
+
+    <span class="k">return</span> <span class="n">text</span></div>
+
+
+
+<div class="viewcode-block" id="safe_latex_render">
+<a class="viewcode-back" href="../../../api/str.html#scitex_core.str.safe_latex_render">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">safe_latex_render</span><span class="p">(</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fallback_strategy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">preserve_math</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Safely render LaTeX text with automatic fallback.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : str</span>
+<span class="sd">        Text that may contain LaTeX</span>
+<span class="sd">    fallback_strategy : str, optional</span>
+<span class="sd">        Strategy when LaTeX fails: &quot;auto&quot;, &quot;mathtext&quot;, &quot;unicode&quot;, &quot;plain&quot;</span>
+<span class="sd">    preserve_math : bool, optional</span>
+<span class="sd">        Whether to preserve mathematical notation in fallbacks</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        Safely rendered text</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">text</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">text</span>
+
+    <span class="c1"># Import matplotlib when needed</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+    <span class="c1"># Determine if we should attempt LaTeX</span>
+    <span class="n">use_latex</span> <span class="o">=</span> <span class="n">_fallback_mode</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span> <span class="ow">and</span> <span class="n">check_latex_capability</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">use_latex</span><span class="p">:</span>
+        <span class="c1"># Try LaTeX first</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Test rendering capability with the actual text</span>
+            <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">text</span>  <span class="c1"># LaTeX works</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">LaTeXFallbackError</span><span class="p">(</span><span class="s2">&quot;LaTeX rendering failed&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="c1"># Fall through to fallback strategies</span>
+            <span class="k">pass</span>
+
+    <span class="c1"># Apply fallback strategy</span>
+    <span class="k">if</span> <span class="n">fallback_strategy</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+        <span class="c1"># Automatically choose best fallback</span>
+        <span class="k">if</span> <span class="n">preserve_math</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;$&quot;</span> <span class="ow">in</span> <span class="n">text</span> <span class="ow">or</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="n">text</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">latex_to_mathtext</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">latex_to_unicode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">latex_to_unicode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">fallback_strategy</span> <span class="o">==</span> <span class="s2">&quot;mathtext&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">latex_to_mathtext</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">fallback_strategy</span> <span class="o">==</span> <span class="s2">&quot;unicode&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">latex_to_unicode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">fallback_strategy</span> <span class="o">==</span> <span class="s2">&quot;plain&quot;</span><span class="p">:</span>
+        <span class="c1"># Strip all LaTeX and return plain text</span>
+        <span class="n">plain</span> <span class="o">=</span> <span class="n">latex_to_unicode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="c1"># Remove any remaining special characters</span>
+        <span class="n">plain</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^\w\s\(\)\[\].,;:!?-]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">plain</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">plain</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown fallback strategy: </span><span class="si">{</span><span class="n">fallback_strategy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="latex_fallback_decorator">
+<a class="viewcode-back" href="../../../api/str.html#scitex_core.str.latex_fallback_decorator">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">latex_fallback_decorator</span><span class="p">(</span>
+    <span class="n">fallback_strategy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">preserve_math</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decorator to add LaTeX fallback capability to functions.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fallback_strategy : str, optional</span>
+<span class="sd">        Fallback strategy to use</span>
+<span class="sd">    preserve_math : bool, optional</span>
+<span class="sd">        Whether to preserve mathematical notation</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    callable</span>
+<span class="sd">        Decorated function with LaTeX fallback</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+        <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="c1"># Check if this is a LaTeX-related error</span>
+                <span class="n">error_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="n">latex_error_indicators</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="s2">&quot;latex&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;tex&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;dvi&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;tfm&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;font&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;usetex&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;kpathsea&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;dvipng&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ghostscript&quot;</span><span class="p">,</span>
+                <span class="p">]</span>
+
+                <span class="k">if</span> <span class="nb">any</span><span class="p">(</span>
+                    <span class="n">indicator</span> <span class="ow">in</span> <span class="n">error_str</span>
+                    <span class="k">for</span> <span class="n">indicator</span> <span class="ow">in</span> <span class="n">latex_error_indicators</span>
+                <span class="p">):</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LaTeX error in </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="s2">&quot;Falling back to alternative text rendering&quot;</span>
+                    <span class="p">)</span>
+
+                    <span class="c1"># Try to apply fallback to string arguments</span>
+                    <span class="n">new_args</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                            <span class="n">new_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                                <span class="n">safe_latex_render</span><span class="p">(</span>
+                                    <span class="n">arg</span><span class="p">,</span> <span class="n">fallback_strategy</span><span class="p">,</span> <span class="n">preserve_math</span>
+                                <span class="p">)</span>
+                            <span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">new_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+
+                    <span class="n">new_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                            <span class="n">new_kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">safe_latex_render</span><span class="p">(</span>
+                                <span class="n">value</span><span class="p">,</span> <span class="n">fallback_strategy</span><span class="p">,</span> <span class="n">preserve_math</span>
+                            <span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">new_kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+                    <span class="c1"># Import matplotlib when needed</span>
+                    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+                    <span class="c1"># Temporarily disable LaTeX for this call</span>
+                    <span class="n">original_usetex</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;text.usetex&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;text.usetex&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">new_args</span><span class="p">,</span> <span class="o">**</span><span class="n">new_kwargs</span><span class="p">)</span>
+                        <span class="k">return</span> <span class="n">result</span>
+                    <span class="k">finally</span><span class="p">:</span>
+                        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;text.usetex&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">original_usetex</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Re-raise non-LaTeX errors</span>
+                    <span class="k">raise</span>
+
+        <span class="k">return</span> <span class="n">wrapper</span>
+
+    <span class="k">return</span> <span class="n">decorator</span></div>
+
+
+
+<div class="viewcode-block" id="get_latex_status">
+<a class="viewcode-back" href="../../../api/str.html#scitex_core.str.get_latex_status">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_latex_status</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get comprehensive LaTeX status information.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Dict[str, Any]</span>
+<span class="sd">        Status information including capability, mode, and configuration</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;latex_available&quot;</span><span class="p">:</span> <span class="n">check_latex_capability</span><span class="p">(),</span>
+        <span class="s2">&quot;fallback_mode&quot;</span><span class="p">:</span> <span class="n">get_fallback_mode</span><span class="p">(),</span>
+        <span class="s2">&quot;usetex_enabled&quot;</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;text.usetex&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+        <span class="s2">&quot;mathtext_fontset&quot;</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mathtext.fontset&quot;</span><span class="p">,</span> <span class="s2">&quot;cm&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;font_family&quot;</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;font.family&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;serif&quot;</span><span class="p">]),</span>
+        <span class="s2">&quot;cache_info&quot;</span><span class="p">:</span> <span class="n">check_latex_capability</span><span class="o">.</span><span class="n">cache_info</span><span class="p">()</span><span class="o">.</span><span class="n">_asdict</span><span class="p">(),</span>
+    <span class="p">}</span></div>
+
+
+
+<span class="c1"># Convenience functions</span>
+<div class="viewcode-block" id="enable_latex_fallback">
+<a class="viewcode-back" href="../../../api/str.html#scitex_core.str.enable_latex_fallback">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">enable_latex_fallback</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enable LaTeX fallback with specified mode.&quot;&quot;&quot;</span>
+    <span class="n">set_fallback_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="disable_latex_fallback">
+<a class="viewcode-back" href="../../../api/str.html#scitex_core.str.disable_latex_fallback">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">disable_latex_fallback</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Disable LaTeX fallback (force LaTeX usage).&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_latex_available</span>
+    <span class="n">_latex_available</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Force LaTeX usage</span></div>
+
+
+
+<div class="viewcode-block" id="reset_latex_cache">
+<a class="viewcode-back" href="../../../api/str.html#scitex_core.str.reset_latex_cache">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">reset_latex_cache</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset the LaTeX capability cache.&quot;&quot;&quot;</span>
+    <span class="n">check_latex_capability</span><span class="o">.</span><span class="n">cache_clear</span><span class="p">()</span>
+    <span class="k">global</span> <span class="n">_latex_available</span>
+    <span class="n">_latex_available</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+<span class="c1"># EOF</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Yusuke Watanabe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

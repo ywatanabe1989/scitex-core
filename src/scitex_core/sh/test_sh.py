@@ -7,66 +7,74 @@ from __future__ import annotations
 
 import os
 
-__FILE__ = (
-    "./src/scitex/sh/test_sh.py"
-)
+__FILE__ = "./src/scitex/sh/test_sh.py"
 __DIR__ = os.path.dirname(__FILE__)
 # ----------------------------------------
 
 __FILE__ = __file__
 
-import sys
 
-import matplotlib.pyplot as plt
+def _run_tests() -> None:
+    """Run sh smoke tests against the scitex package.
 
-import scitex
+    scitex is imported lazily so this submodule remains importable in
+    clean venvs that do not have scitex installed.
+    """
+    import sys
 
-CONFIG, sys.stdout, sys.stderr, plt, CC = scitex.session.start(
-    sys, plt, verbose=False
-)
+    import matplotlib.pyplot as plt
+    import scitex
 
-# Test 1: Basic list command
-print("Test 1: Basic list command")
-result = scitex.sh(["echo", "Hello World"], verbose=True)
-print(f"Result: {result}\n")
+    CONFIG, sys.stdout, sys.stderr, plt, CC = scitex.session.start(
+        sys, plt, verbose=False
+    )
 
-# Test 2: String command should be rejected
-print("Test 2: String command rejection")
-try:
-    result = scitex.sh("echo 'Hello'")
-    print("ERROR: Should have raised TypeError")
-except TypeError as ee:
-    print(f"Correctly rejected: {ee}\n")
+    # Test 1: Basic list command
+    print("Test 1: Basic list command")
+    result = scitex.sh(["echo", "Hello World"], verbose=True)
+    print(f"Result: {result}\n")
 
-# Test 3: sh_run convenience function
-print("Test 3: sh_run convenience function")
-result = scitex.sh_run(["ls", "-la"])
-print(f"Success: {result['success']}, Exit code: {result['exit_code']}\n")
+    # Test 2: String command should be rejected
+    print("Test 2: String command rejection")
+    try:
+        result = scitex.sh("echo 'Hello'")
+        print("ERROR: Should have raised TypeError")
+    except TypeError as ee:
+        print(f"Correctly rejected: {ee}\n")
 
-# Test 4: Error handling
-print("Test 4: Error handling")
-result = scitex.sh_run(["cat", "/nonexistent/file"], verbose=False)
-print(f"Success: {result['success']}")
-print(f"Exit code: {result['exit_code']}")
-print(f"Stderr: {result['stderr']}\n")
+    # Test 3: sh_run convenience function
+    print("Test 3: sh_run convenience function")
+    result = scitex.sh_run(["ls", "-la"])
+    print(f"Success: {result['success']}, Exit code: {result['exit_code']}\n")
 
-# Test 5: Security - quote function
-print("Test 5: Security - quote function")
-from scitex.sh import quote
+    # Test 4: Error handling
+    print("Test 4: Error handling")
+    result = scitex.sh_run(["cat", "/nonexistent/file"], verbose=False)
+    print(f"Success: {result['success']}")
+    print(f"Exit code: {result['exit_code']}")
+    print(f"Stderr: {result['stderr']}\n")
 
-dangerous_input = "file; rm -rf /"
-safe_quoted = quote(dangerous_input)
-print(f"Original: {dangerous_input}")
-print(f"Quoted: {safe_quoted}\n")
+    # Test 5: Security - quote function
+    print("Test 5: Security - quote function")
+    from scitex.sh import quote
 
-# Test 6: Security - null byte rejection
-print("Test 6: Security - null byte rejection")
-try:
-    scitex.sh(["echo", "test\0malicious"])
-    print("ERROR: Should have raised ValueError")
-except ValueError as ee:
-    print(f"Correctly rejected: {ee}\n")
+    dangerous_input = "file; rm -rf /"
+    safe_quoted = quote(dangerous_input)
+    print(f"Original: {dangerous_input}")
+    print(f"Quoted: {safe_quoted}\n")
 
-scitex.session.close(CONFIG, verbose=False, notify=False)
+    # Test 6: Security - null byte rejection
+    print("Test 6: Security - null byte rejection")
+    try:
+        scitex.sh(["echo", "test\0malicious"])
+        print("ERROR: Should have raised ValueError")
+    except ValueError as ee:
+        print(f"Correctly rejected: {ee}\n")
+
+    scitex.session.close(CONFIG, verbose=False, notify=False)
+
+
+if __name__ == "__main__":
+    _run_tests()
 
 # EOF

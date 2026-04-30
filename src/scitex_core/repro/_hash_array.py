@@ -54,8 +54,18 @@ def hash_array(array_data: np.ndarray) -> str:
     - Same array will always produce same hash
     - Useful for detecting changes in data
     """
+    # Include shape and dtype in the hash so that arrays with the same
+    # flat content but different shapes/dtypes produce different hashes.
+    shape_bytes = str(array_data.shape).encode("utf-8")
+    dtype_bytes = str(array_data.dtype).encode("utf-8")
     data_bytes = array_data.tobytes()
-    return hashlib.sha256(data_bytes).hexdigest()[:16]
+    hasher = hashlib.sha256()
+    hasher.update(shape_bytes)
+    hasher.update(b"|")
+    hasher.update(dtype_bytes)
+    hasher.update(b"|")
+    hasher.update(data_bytes)
+    return hasher.hexdigest()[:16]
 
 
 __all__ = ["hash_array"]
