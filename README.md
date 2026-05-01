@@ -10,35 +10,25 @@
 [![License: AGPL v3](https://img.shields.io/badge/license-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 <!-- scitex-badges:end -->
 
+<p align="center">
+  <a href="https://scitex.ai">
+    <img src="docs/scitex-logo-blue-cropped.png" alt="SciTeX" width="400">
+  </a>
+</p>
 
-[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-200%2B%20tests-brightgreen.svg)](tests/)
-[![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)](CHANGELOG.md)
-[![Code Style](https://img.shields.io/badge/code%20style-black-black.svg)](https://github.com/psf/black)
+<p align="center"><b>Bundled foundation utilities (logging, errors, sh, path, str, dict, types, dt, parallel, repro) for the SciTeX ecosystem.</b></p>
 
-Core infrastructure for the SciTeX ecosystem.
+<p align="center">
+  <a href="https://scitex-core.readthedocs.io/">Full Documentation</a> · <code>pip install scitex-core</code>
+</p>
 
-> **Interfaces:** Python ⭐⭐⭐ (primary) · CLI — · MCP — · Skills ⭐⭐ · Hook — · HTTP —
+---
 
 ## Problem and Solution
 
-
 | # | Problem | Solution |
 |---|---------|----------|
-| 1 | **10 separate scitex-* utility packages for dev tooling** -- `pip install scitex-str`, `scitex-dict`, `scitex-path`, ... gets tedious | **Bundled foundation** -- `import scitex_core` exposes `logging`, `errors`, `sh`, `path`, `str`, `dict`, `types`, `dt`, `parallel`, `repro` in one install |
-
-## Overview
-
-`scitex-core` provides shared utilities used across all SciTeX packages:
-
-- **logging**: Enhanced logging with colored output and file support
-- **errors**: Common error classes with rich context
-- **sh**: Safe shell command execution
-- **str**: String utilities including ANSI color formatting
-- **path**: File path and directory utilities
-- **repro**: Reproducibility utilities (ID generation, random state management)
-- **types**: Shared type definitions and validators
+| 1 | **10 separate scitex-* utility packages for dev tooling** — `pip install scitex-str`, `scitex-dict`, `scitex-path`, ... gets tedious | **Bundled foundation** — `import scitex_core` exposes `logging`, `errors`, `sh`, `path`, `str`, `dict`, `types`, `dt`, `parallel`, `repro` in one install |
 
 ## Installation
 
@@ -46,125 +36,89 @@ Core infrastructure for the SciTeX ecosystem.
 pip install scitex-core
 ```
 
-## Usage
-
-### Logging
+## Quick Start
 
 ```python
-from scitex_core import logging
+from scitex_core import logging, path, repro
 
 logger = logging.getLogger(__name__)
 logger.info("Hello from scitex-core!")
-logger.success("Operation completed")
-```
 
-### Path Utilities
-
-```python
-from scitex_core import path
-
-# Find files
-py_files = path.find_file("/home/user/project", "*.py")
-
-# Get current script path
-script_path = path.this_path()
-
-# Find git repository root
 git_root = path.find_git_root()
-
-# Clean and normalize paths
-cleaned = path.clean("path/with/../spaces ")
+exp_id   = repro.gen_id()
 ```
 
-### Reproducibility
+## 1 Interfaces
+
+<details>
+<summary><strong>Python API</strong></summary>
+
+<br>
 
 ```python
+# Logging
+from scitex_core import logging
+logger = logging.getLogger(__name__)
+logger.info("Hello"); logger.success("Done")
+
+# Path
+from scitex_core import path
+path.find_file("/home/user/project", "*.py")
+path.this_path()
+path.find_git_root()
+
+# Reproducibility
 from scitex_core.repro import RandomStateManager, gen_id
+rng = RandomStateManager(seed=42)
+data = rng("data").random(100)
+rng.verify(data, "my_data")
 
-# Random state management
-rng_manager = RandomStateManager(seed=42)
-data_gen = rng_manager("data")
-data = data_gen.random(100)
-
-# Verify reproducibility
-rng_manager.verify(data, "my_data")
-
-# Generate unique IDs
-exp_id = gen_id()  # "2025Y-11M-10D-12h30m45s_aB3xY9z2"
-```
-
-### Type Definitions
-
-```python
+# Types
 from scitex_core.types import ArrayLike, is_array_like, is_list_of_type
+is_list_of_type([1, 2, 3], int)
 
-def process_data(data: ArrayLike) -> None:
-    if is_array_like(data):
-        print("Valid array-like data")
+# Datetime
+from scitex_core.dt import linspace
+import datetime
+linspace(datetime.datetime(2026, 1, 1), datetime.datetime(2026, 1, 2),
+         n_samples=24)
 
-numbers = [1, 2, 3, 4]
-if is_list_of_type(numbers, int):
-    print("All elements are integers")
+# Parallel
+from scitex_core.parallel import run
+run(my_func, [(arg1,), (arg2,)], n_jobs=4)
+
+# Dict
+from scitex_core.dict import DotDict
+d = DotDict({"a": {"b": 1}})
+d.a.b  # 1
 ```
 
-## Packages Using scitex-core
+</details>
 
-- `scitex-writer` - Academic writing and LaTeX compilation
-- `scitex-scholar` - Research paper management
-- `scitex-io` - Scientific data I/O
-- `scitex` - Main package
+## Status
 
-## Development
+Foundation package — used by `scitex-writer`, `scitex-scholar`,
+`scitex-io`, and the umbrella `scitex` distribution.
 
-```bash
-# Clone repository
-git clone https://github.com/ywatanabe1989/scitex-core
+## Part of SciTeX
 
-# Install in editable mode
-cd scitex-core
-pip install -e ".[dev]"
+`scitex-core` is part of [**SciTeX**](https://scitex.ai).
 
-# Run tests
-pytest tests/ -v
-
-# Run tests with coverage
-pytest --cov=src/scitex_core --cov-report=html tests/
-
-# Quick test (no dependencies)
-python3 tests/simple_runner.py
-```
-
-## Testing
-
-The project has comprehensive test coverage:
-
-- **161+ test methods** across 30+ test classes
-- **3 test modules**: errors, sh, logging
-- **Multiple test runners**: pytest, simple_runner.py, run_tests.sh
-
-See [tests/README.md](tests/README.md) for detailed testing documentation.
-
-### Quick Test
-
-```bash
-# No installation required
-python3 tests/simple_runner.py
-```
-
-### Full Test Suite
-
-```bash
-# Install dependencies
-pip install -e ".[dev]"
-
-# Run all tests
-pytest tests/ -v
-
-# Generate coverage report
-./tests/run_tests.sh -c -h
-open htmlcov/index.html
-```
+>Four Freedoms for Research
+>
+>0. The freedom to **run** your research anywhere — your machine, your terms.
+>1. The freedom to **study** how every step works — from raw data to final manuscript.
+>2. The freedom to **redistribute** your workflows, not just your papers.
+>3. The freedom to **modify** any module and share improvements with the community.
+>
+>AGPL-3.0 — because we believe research infrastructure deserves the same freedoms as the software it runs on.
 
 ## License
 
-MIT License - see LICENSE file for details.
+AGPL-3.0-only (see [LICENSE](./LICENSE)).
+
+---
+
+<p align="center">
+  <a href="https://scitex.ai" target="_blank"><img src="docs/scitex-icon-navy-inverted.png" alt="SciTeX" width="40"/></a>
+</p>
