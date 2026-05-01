@@ -102,7 +102,9 @@ Foundation package — used by `scitex-writer`, `scitex-scholar`,
 
 ## Part of SciTeX
 
-`scitex-core` is part of [**SciTeX**](https://scitex.ai).
+`scitex-core` is part of [**SciTeX**](https://scitex.ai). Install via
+the umbrella with `pip install scitex[core]` to use as
+`scitex.core` (Python).
 
 >Four Freedoms for Research
 >
