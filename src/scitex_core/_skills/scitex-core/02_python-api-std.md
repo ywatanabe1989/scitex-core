@@ -1,3 +1,9 @@
+---
+name: python-api-std
+description: Python API — stdlib-style utilities — see file body for details.
+tags: [scitex-core, scitex-package]
+---
+
 # Python API — stdlib-style utilities
 
 Submodules that mirror / extend Python stdlib: `errors`, `logging`,

@@ -1,3 +1,9 @@
+---
+name: conventions
+description: Conventions — see file body for details.
+tags: [scitex-core, scitex-package]
+---
+
 # Conventions
 
 Rules every consumer of `scitex-core` should follow.
@@ -8,8 +14,8 @@ Re-exported from both `scitex_core` and (via the umbrella package)
 `scitex.core`. Docs across the ecosystem use:
 
 ```python
-import scitex as stx
-stx.core.logging.getLogger(__name__)
+import scitex
+scitex.core.logging.getLogger(__name__)
 ```
 
 In first-party code, import the sub-module directly:

@@ -1,3 +1,9 @@
+---
+name: quick-start
+description: Quick Start — see file body for details.
+tags: [scitex-core, scitex-package]
+---
+
 # Quick Start
 
 `scitex-core` exports ten sub-modules. Import what you need:
