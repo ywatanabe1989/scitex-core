@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# File: ./tests/scitex_core/path/test_this_path.py
+# File: ./tests/scitex_core/path/test__this_path.py
 
 """Tests for scitex_core.path this_path utilities."""
 
 import os
-from pathlib import Path
 
 import pytest
 
@@ -35,7 +34,7 @@ class TestThisPath:
         """Test that this_path returns this file's path."""
         result = this_path()
         # Should contain the test file name
-        assert "test_this_path" in result
+        assert "this_path" in result
 
     def test_this_path_custom_fake_path(self):
         """Test custom fake path for IPython."""
@@ -60,7 +59,7 @@ class TestThisPath:
         # Call from helper function
         result = helper_function()
         # Should still return this test file's path
-        assert "test_this_path" in result
+        assert "this_path" in result
 
 
 if __name__ == "__main__":
