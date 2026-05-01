@@ -44,6 +44,7 @@ Homepage = "https://github.com/ywatanabe1989/scitex-core"
 Repository = "https://github.com/ywatanabe1989/scitex-core"
 Issues = "https://github.com/ywatanabe1989/scitex-core/issues"
 "Bug Tracker" = "https://github.com/ywatanabe1989/scitex-core/issues"
+Documentation = "https://scitex-core.readthedocs.io"
 
 [project.entry-points."scitex_dev.docs"]
 scitex-core = "scitex_core"
