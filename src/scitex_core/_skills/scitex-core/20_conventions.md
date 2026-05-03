@@ -1,7 +1,8 @@
 ---
-name: conventions
-description: Conventions — see file body for details.
-tags: [scitex-core, scitex-package]
+description: |
+  [TOPIC] Conventions
+  [DETAILS] Import style, logging defaults, shadowed stdlib names (str/dict).
+tags: [scitex-core-conventions]
 ---
 
 # Conventions

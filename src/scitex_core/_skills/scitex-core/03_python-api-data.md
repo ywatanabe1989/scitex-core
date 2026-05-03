@@ -1,7 +1,8 @@
 ---
-name: python-api-data
-description: Python API — data + reproducibility — see file body for details.
-tags: [scitex-core, scitex-package]
+description: |
+  [TOPIC] Python API — Data + Reproducibility
+  [DETAILS] dict, types, dt, parallel, repro submodules.
+tags: [scitex-core-python-api-data]
 ---
 
 # Python API — data + reproducibility

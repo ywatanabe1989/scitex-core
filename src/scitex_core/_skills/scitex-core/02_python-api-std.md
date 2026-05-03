@@ -1,7 +1,8 @@
 ---
-name: python-api-std
-description: Python API — stdlib-style utilities — see file body for details.
-tags: [scitex-core, scitex-package]
+description: |
+  [TOPIC] Python API — Stdlib-Style Utilities
+  [DETAILS] errors, logging, sh, path, str submodules.
+tags: [scitex-core-python-api-std]
 ---
 
 # Python API — stdlib-style utilities

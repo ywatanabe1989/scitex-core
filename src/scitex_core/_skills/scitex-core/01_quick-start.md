@@ -1,7 +1,8 @@
 ---
-name: quick-start
-description: Quick Start — see file body for details.
-tags: [scitex-core, scitex-package]
+description: |
+  [TOPIC] Quick Start
+  [DETAILS] Representative imports across scitex_core submodules.
+tags: [scitex-core-quick-start]
 ---
 
 # Quick Start

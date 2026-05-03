@@ -1,7 +1,8 @@
 ---
-name: scitex-core-env-vars
-description: Environment variables read by scitex-core at import / runtime. Follow SCITEX_<MODULE>_* convention — see general/10_arch-environment-variables.md.
-tags: [scitex-core, scitex-package]
+description: |
+  [TOPIC] Environment Variables
+  [DETAILS] SCITEX_* env vars read by scitex-core at import/runtime; follow SCITEX_<MODULE>_* convention.
+tags: [scitex-core-env-vars]
 ---
 
 # scitex-core — Environment Variables
