@@ -35,15 +35,20 @@ This package does not ship as a submodule of the `scitex` umbrella.
 
 ### Core
 
-* [01_quick-start](01_quick-start.md) — Representative imports
-* [02_python-api-std](02_python-api-std.md) — `errors`, `logging`, `sh`, `path`, `str`
-* [03_python-api-data](03_python-api-data.md) — `dict`, `types`, `dt`, `parallel`, `repro`
+* [01_installation](01_installation.md) — pip install + smoke verify
+* [02_quick-start](02_quick-start.md) — representative one-liners per submodule
+* [03_python-api](03_python-api.md) — the 10 bundled submodules + per-submodule skill links
 
 ### Conventions
 
 * [20_conventions](20_conventions.md) — Import style, logging defaults, shadowed stdlib names
 
-
 ## Environment
 
 - [21_env-vars.md](21_env-vars.md) — SCITEX_* env vars read by scitex-core at runtime
+
+## Legacy / detail (kept for context)
+
+- [10_quick-start](10_quick-start.md) — original quick-start
+- [11_python-api-std](11_python-api-std.md) — `errors`, `logging`, `sh`, `path`, `str` legacy listing
+- [12_python-api-data](12_python-api-data.md) — `dict`, `types`, `dt`, `parallel`, `repro` legacy listing
