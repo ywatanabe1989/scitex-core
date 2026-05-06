@@ -68,7 +68,7 @@ def printc(message: str, c: str = "blue", **kwargs):
 
 def _get_logger():
     """Get logger lazily to avoid circular import during module initialization."""
-    from scitex import logging
+    import scitex_logging as logging
 
     return logging.getLogger(__name__)
 

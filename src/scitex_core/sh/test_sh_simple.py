@@ -24,7 +24,7 @@ def _run_tests() -> None:
 
     sys.path.insert(0, "/home/ywatanabe/proj/scitex_repo/src")
 
-    from scitex.sh import quote, sh, sh_run
+    from scitex_sh import quote, sh, sh_run
 
     # Test 1: Basic list command
     print("Test 1: Basic list command")

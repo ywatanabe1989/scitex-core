@@ -56,7 +56,7 @@ def _run_tests() -> None:
 
     # Test 5: Security - quote function
     print("Test 5: Security - quote function")
-    from scitex.sh import quote
+    from scitex_sh import quote
 
     dangerous_input = "file; rm -rf /"
     safe_quoted = quote(dangerous_input)
