@@ -38,6 +38,26 @@
 pip install scitex-core
 ```
 
+## Architecture
+
+```
+scitex_core/
+├── __init__.py        ← re-exports every subpackage below
+├── errors.py          ← shared exception hierarchy
+├── logging/           ← getLogger(), .success(), file+console handlers
+├── path/              ← find_git_root, find_file, this_path, mk_spath
+├── repro/             ← RandomStateManager, gen_id, fix_seeds
+├── sh/                ← shell-out helpers (sh, run, capture)
+├── str/               ← printc, color_text, search-and-replace utils
+├── dict/              ← DotDict, deep_update, listed_dict
+├── types/             ← ArrayLike, is_array_like, is_list_of_type
+├── dt/                ← datetime helpers (linspace over datetimes)
+└── parallel/          ← run(func, args, n_jobs=...)
+```
+
+Foundation package — every leaf module is a previously-standalone
+`scitex-*` utility, bundled here so downstream packages get one install.
+
 ## Quick Start
 
 ```python
@@ -96,6 +116,23 @@ d.a.b  # 1
 ```
 
 </details>
+
+## Demo
+
+```mermaid
+flowchart LR
+    A[scitex-core] --> L[logging]
+    A --> P[path]
+    A --> R[repro]
+    A --> T[types]
+    A --> D[dt]
+    A --> PA[parallel]
+    A --> DI[dict]
+    A --> S[str]
+    A --> SH[sh]
+    L & P & R --> U["downstream pkgs<br/>(scitex-io, scitex-writer,<br/>scitex-scholar, ...)"]
+    U --> X["umbrella scitex"]
+```
 
 ## Status
 
