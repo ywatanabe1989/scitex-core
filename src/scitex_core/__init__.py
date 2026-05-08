@@ -17,8 +17,12 @@ Provides foundational utilities used across all SciTeX packages:
 
 from __future__ import annotations
 
+import warnings
+
 try:
-    from importlib.metadata import version as _v, PackageNotFoundError
+    from importlib.metadata import PackageNotFoundError
+    from importlib.metadata import version as _v
+
     try:
         __version__ = _v("scitex-core")
     except PackageNotFoundError:
@@ -26,17 +30,21 @@ try:
     del _v, PackageNotFoundError
 except ImportError:  # pragma: no cover — only on ancient Pythons
     __version__ = "0.0.0+local"
+
+warnings.warn(
+    "scitex-core is deprecated and will be removed. Every submodule has "
+    "moved to its own standalone peer: scitex_logging, scitex_dict, "
+    "scitex_str, scitex_path, scitex_repro, scitex_parallel, "
+    "scitex_types, scitex_sh, scitex_datetime (formerly scitex_core.dt). "
+    "scitex_core.errors will be relocated; pin scitex-core for now if you "
+    "rely on it. Migrate to the standalones (or use the `scitex` umbrella "
+    "which routes scitex.<short> directly to the peer).",
+    DeprecationWarning,
+    stacklevel=2,
+)
+
 # Re-export main modules for convenient imports
-from . import errors
-from . import logging
-from . import path
-from . import repro
-from . import sh
-from . import str
-from . import types
-from . import dict
-from . import parallel
-from . import dt
+from . import dict, dt, errors, logging, parallel, path, repro, sh, str, types
 
 __all__ = [
     "errors",
